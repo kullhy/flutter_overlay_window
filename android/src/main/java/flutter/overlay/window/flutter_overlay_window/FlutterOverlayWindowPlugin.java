@@ -83,7 +83,6 @@ public class FlutterOverlayWindowPlugin implements
             boolean enableDrag = call.argument("enableDrag");
             String positionGravity = call.argument("positionGravity");
 
-
             WindowSetup.width = width != null ? width : -1;
             WindowSetup.height = height != null ? height : -1;
             WindowSetup.enableDrag = enableDrag;
@@ -165,11 +164,17 @@ public class FlutterOverlayWindowPlugin implements
 
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_FOR_OVERLAY_PERMISSION) {
-            pendingResult.success(checkOverlayPermission());
-            return true;
+        // if(resultCode != RESULT_CANCELED){
+        if (data != null) {
+            if (requestCode == REQUEST_CODE_FOR_OVERLAY_PERMISSION) {
+                pendingResult.success(checkOverlayPermission());
+                pendingResult = null;
+                return true;
+            }
         }
         return false;
+        // }
+        // }
     }
 
 }
