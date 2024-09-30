@@ -7,7 +7,6 @@ void main() {
   runApp(const MyApp());
 }
 
-
 @pragma("vm:entry-point")
 void overlayMain() {
   WidgetsFlutterBinding.ensureInitialized();

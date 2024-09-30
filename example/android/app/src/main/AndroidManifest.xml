@@ -7,7 +7,11 @@
 
     <application android:label="flutter_overlay_window_example" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
 
-        <service android:name="flutter.overlay.window.flutter_overlay_window.OverlayService" android:exported="false" />
+        <service android:name="flutter.overlay.window.flutter_overlay_window.OverlayService" 
+            android:exported="false">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="explanation_for_special_use"/>
+        </service>
 
         <service android:name="slayer.accessibility.service.flutter_accessibility_service.AccessibilityListener" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:exported="false">
             <intent-filter>
